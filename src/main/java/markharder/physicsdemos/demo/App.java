@@ -25,7 +25,9 @@ public class App extends GraphicsWindow {
     }
 
     public void click() {
-        System.out.println("Click");
+    }
+
+    public void keypress(char key) {
     }
 
     public void tick() {
