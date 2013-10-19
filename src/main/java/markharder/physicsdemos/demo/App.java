@@ -1,39 +1,49 @@
 package markharder.physicsdemos.demo;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
+import java.util.ArrayList;
 
 import markharder.physicsdemos.demo.demos.Demo;
 import markharder.physicsdemos.demo.demos.Fireworks;
 import markharder.physicsdemos.demo.graphics.GraphicsWindow;
+import markharder.physicsdemos.demo.interfacing.Menu;
 
 /**
- *   Start the application. Brings up a menu with options for
- * demos.
+ *   Start the application.
+ *   Brings up a menu with options for demos.
+ *   Clicking on a demo runs it
  *
  */
 public class App extends GraphicsWindow {
     public static App application;
 
+    private Menu mainMenu;
     private Demo currentDemo;
 
     public App(int width, int height) {
         super(width, height);
-        currentDemo = new Fireworks(width, height);
 
-        currentDemo.start();
+        List<String> menuOptions = new ArrayList<String>();
+        menuOptions.add("Fireworks");
+        menuOptions.add("Quit");
+
+        mainMenu = new Menu(width, height, menuOptions);
+
+        currentDemo = null;
     }
 
     public void tick() {
-        if (currentDemo != null) {
+        if (currentDemo == null) {
+            mainMenu.tick();
+        } else {
             currentDemo.tick();
         }
     }
 
     public void draw(Graphics g) {
         if (currentDemo == null) {
-            g.setColor(Color.BLACK);
-            g.fillRect(0, 0, width, height);
+            mainMenu.draw(g);
         } else {
             currentDemo.draw(g);
         }
