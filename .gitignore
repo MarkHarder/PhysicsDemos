@@ -4,3 +4,9 @@
 *.jar
 *.war
 *.ear
+
+# Vim Autosave Files #
+*.sw?
+
+# Mac OS X Auto-generated Files #
+.DS_Store
