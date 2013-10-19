@@ -24,6 +24,10 @@ public class App extends GraphicsWindow {
         currentDemo.start();
     }
 
+    public void click() {
+        System.out.println("Click");
+    }
+
     public void tick() {
         if (currentDemo != null) {
             currentDemo.tick();
