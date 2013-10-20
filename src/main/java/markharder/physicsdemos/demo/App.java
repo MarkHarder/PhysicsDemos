@@ -30,6 +30,7 @@ public class App extends GraphicsWindow {
 
         List<String> menuOptions = new ArrayList<String>();
         menuOptions.add("Fireworks");
+        menuOptions.add("Launcher");
         menuOptions.add("Quit");
 
         mainMenu = new Menu(width, height, menuOptions);
