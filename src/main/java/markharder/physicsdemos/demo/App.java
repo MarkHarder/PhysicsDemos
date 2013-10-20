@@ -33,6 +33,9 @@ public class App extends GraphicsWindow {
         currentDemo = null;
     }
 
+    public void click() {
+    }
+
     public void tick() {
         if (currentDemo == null) {
             mainMenu.tick();
