@@ -18,9 +18,14 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
+import markharder.physicsdemos.demo.input.Mouse;
+import markharder.physicsdemos.demo.input.Keyboard;
+
 public abstract class GraphicsWindow extends Canvas implements Runnable {
 	private boolean running = false;
 	private Thread thread;
+    protected Mouse mouse;
+    protected Keyboard keyboard;
 	protected JFrame frame;
 	protected int width, height;
 	
@@ -40,7 +45,15 @@ public abstract class GraphicsWindow extends Canvas implements Runnable {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
+
+        keyboard = new Keyboard();
+        addKeyListener(keyboard);
+
+        mouse = new Mouse();
+        addMouseMotionListener(mouse);
+		addMouseListener(mouse);
+		frame.requestFocus();	
+
 		start();
 	}
 
