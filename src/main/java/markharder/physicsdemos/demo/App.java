@@ -27,6 +27,9 @@ public class App extends GraphicsWindow {
     public void click() {
     }
 
+    public void keypress(char key) {
+    }
+
     public void tick() {
         if (currentDemo != null) {
             currentDemo.tick();
