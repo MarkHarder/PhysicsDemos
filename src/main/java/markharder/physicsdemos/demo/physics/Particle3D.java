@@ -11,8 +11,13 @@ import java.awt.Graphics;
  */
 public class Particle3D {
     private double x, y, z, vx, vy, vz, ay;
+    private Color color;
 
     public Particle3D(double x, double y, double z, double vx, double vy, double vz) {
+        this(x, y, z, vx, vy, vz, Color.BLUE);
+    }
+
+    public Particle3D(double x, double y, double z, double vx, double vy, double vz, Color color) {
         // set position
         this.x = x;
         this.y = y;
@@ -25,6 +30,9 @@ public class Particle3D {
 
         // set y-acceleration
         this.ay = -9.8 / 2 / 60;
+
+        // the particle's color
+        this.color = color;
     }
 
     public void tick() {
@@ -41,7 +49,12 @@ public class Particle3D {
     }
 
     public void draw(Graphics g, int width, int height) {
-        g.setColor(Color.BLUE);
+        g.setColor(color);
         g.fillOval((int) (x - z / 2), (int) (height - (y - z / 2)), (int) z, (int) z);
+    }
+
+
+    public double getY() {
+        return y;
     }
 }

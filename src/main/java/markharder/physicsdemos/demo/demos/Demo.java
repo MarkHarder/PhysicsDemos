@@ -24,4 +24,8 @@ public interface Demo {
     public void tick();
 
     public void draw(Graphics g);
+
+    public void click();
+
+    public void keypress(char key);
 }

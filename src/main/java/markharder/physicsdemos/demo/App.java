@@ -2,6 +2,7 @@ package markharder.physicsdemos.demo;
 
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ArrayList;
@@ -87,10 +88,16 @@ public class App extends GraphicsWindow {
     public void click() {
         if (inMenu()) {
             mainMenu.click();
+        } else {
+            currentDemo.click();
         }
     }
 
     public void keypress(char key) {
+        if (key == KeyEvent.VK_ESCAPE) {
+            currentDemo.quit();
+            currentDemo = null;
+        }
     }
 
     public void tick() {
