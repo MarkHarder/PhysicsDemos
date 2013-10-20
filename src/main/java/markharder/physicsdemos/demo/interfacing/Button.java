@@ -45,5 +45,9 @@ public class Button extends Rectangle {
         g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
         g.drawString(name, 60, 90 + 60 * index);
     }
+
+    public String getName() {
+        return name;
+    }
 }
 

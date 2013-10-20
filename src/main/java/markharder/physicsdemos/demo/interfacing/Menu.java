@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
+import markharder.physicsdemos.demo.App;
+import markharder.physicsdemos.demo.input.Mouse;
+
 /**
  * A simple menu interface with buttons to perform actions
  *
@@ -39,6 +42,18 @@ public class Menu {
 
         for (Button b : buttons) {
             b.draw(g);
+        }
+    }
+
+    public void click() {
+        for (Button b : buttons) {
+            if (b.contains(Mouse.location)) {
+                if (b.getName().equals("Quit")) {
+                    App.application.quit();
+                } else {
+                    App.application.runDemo(b.getName());
+                }
+            }
         }
     }
 }
