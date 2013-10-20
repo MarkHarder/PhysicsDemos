@@ -49,7 +49,7 @@ public class Launcher implements Demo {
         if (running) {
             ticks++;
             
-            if (ticks % 240 == 0) {
+            if (ticks % 60 == 0) {
                 particles.add(new Particle2D(0.0, height - 50.0, 5.0, 0.0));
                 particles.add(new Particle2D(0.0, height - 100.0, 6.66, 0.0));
                 particles.add(new Particle2D(0.0, height - 150.0, 8.33, 0.0));
@@ -59,7 +59,27 @@ public class Launcher implements Demo {
             List<Particle2D> delete = new ArrayList<Particle2D>();
             
             for (Particle2D p: particles) {
-                p.tick(width, height);
+                double xdist = p.getX() - Mouse.location.x;
+                double ydist = p.getY() - (height - Mouse.location.y);
+
+                if (xdist * xdist + ydist * ydist <= 1600) {
+                    if (xdist < 0) {
+                        p.setAX(0.25);
+                    } else {
+                        p.setAX(-0.25);
+                    }
+                    if (ydist < 0) {
+                        p.setAY(-9.8 / 60 + 0.25);
+                    } else {
+                        p.setAY(-9.8 / 60 - 0.25);
+                    }
+                } else {
+                    p.setAX(0.0);
+                    p.setAY(-9.8 / 60);
+                }
+
+
+                p.tick();
                 if (p.getX() < 0 || p.getX() > width || p.getY() > height) {
                     delete.add(p);
                 }
