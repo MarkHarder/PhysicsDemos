@@ -10,7 +10,7 @@ import java.awt.Graphics;
  * @version 1.0
  */
 public class Particle2D {
-    private double x, y, vx, vy, ax, ay;
+    protected double x, y, vx, vy, ax, ay;
 
     public Particle2D(double x, double y, double vx, double vy) {
         // set position
