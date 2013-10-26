@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.lang.reflect.Constructor;
 
 import markharder.physicsdemos.demo.demos.Demo;
-import markharder.physicsdemos.demo.demos.Fireworks;
 import markharder.physicsdemos.demo.graphics.GraphicsWindow;
 import markharder.physicsdemos.demo.interfacing.Menu;
 

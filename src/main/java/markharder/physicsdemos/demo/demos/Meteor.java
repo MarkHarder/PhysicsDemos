@@ -11,7 +11,7 @@ import markharder.physicsdemos.demo.physics.Particle2D;
 import markharder.physicsdemos.demo.physics.Point;
 
 public class Meteor implements Demo {
-    private boolean running;
+    public boolean running;
     private int width, height;
 	private int ticks;
 	
@@ -50,6 +50,7 @@ public class Meteor implements Demo {
 			g.setColor(Color.GREEN);
 			g.fillOval((int) (endPoint.getX() - 2.5), (int) (height - (endPoint.getY() - 2.5)), 5, 5);
 		}
+
 	}
 
 	@Override
@@ -59,7 +60,12 @@ public class Meteor implements Demo {
             
             for (int i = 0; i < particles.size(); i++) {
                 MeteorParticle2D p = particles.get(i);
-                if (p.getLastY() > height) {
+                for (int j = 0; j < lines.size(); j++) {
+                    if (lines.get(j).intersects(p.getVelocityVector())) {
+                        System.out.println("**" + lines.get(j).getAngle());
+                    }
+                }
+                if (p.getLastY() < 0) {
                     delete.add(i);
                 }
                 p.tick();

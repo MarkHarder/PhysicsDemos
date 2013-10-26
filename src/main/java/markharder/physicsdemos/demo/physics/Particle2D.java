@@ -54,4 +54,11 @@ public class Particle2D {
     public double getY() {
         return y;
     }
+
+    public Line getVelocityVector() {
+        if (vx >= 0) {
+            return new Line(x, y, x + vx, y + vy);
+        }
+        return new Line(x + vx, y + vy, x, y);
+    }
 }
