@@ -1,6 +1,7 @@
 package markharder.physicsdemos.demo.interfacing;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import markharder.physicsdemos.demo.input.Mouse;
@@ -13,9 +14,10 @@ import markharder.physicsdemos.demo.input.Mouse;
  */
 public class Slider {
     private boolean active;
+    private String label;
     private double x, y, height, min, max, pos;
 
-    public Slider(double x, double y, double height, double min, double max, double pos) {
+    public Slider(double x, double y, double height, double min, double max, double pos, String label) {
         active = false;
         this.x = x;
         this.y = y;
@@ -23,6 +25,7 @@ public class Slider {
         this.min = min;
         this.max = max;
         this.pos = pos;
+        this.label = label;
     }
 
     public double getValue() {
@@ -43,8 +46,13 @@ public class Slider {
 
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 18));
         g.drawLine((int) x, (int) y, (int) x, (int) (y + height));
         g.fillRect((int) (x - 5), (int) (y + height - height * pos) - 5, 10, 10);
+        g.drawString(label, (int) (x - 20), (int) (y - 10));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+        g.drawString(Integer.toString((int) max), (int) (x - 20), (int) (y + 5));
+        g.drawString(Integer.toString((int) min), (int) (x - 20), (int) (y + height));
     }
 
     public void tick() {

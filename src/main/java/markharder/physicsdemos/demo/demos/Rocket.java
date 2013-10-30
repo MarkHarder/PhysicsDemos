@@ -29,14 +29,14 @@ public class Rocket implements Demo {
 
 		ticks = 0;
 
-        rocket = new Rectangle(230, 0, 40, 60);
+        rocket = new Rectangle(210, 0, 40, 60);
         vy = 0;
         ay = 0;
         fuel = 60 / 3;
         mass = 5.0;
 
-        fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0);
-        massSlider = new Slider(450, 50, 300, 1, 10, 0.5);
+        fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0, "Fuel");
+        massSlider = new Slider(450, 50, 300, 1, 10, 0.5, "Mass");
 	}
 
 	@Override
@@ -45,11 +45,12 @@ public class Rocket implements Demo {
 		g.fillRect(0, 0, width, height);
 		
 		g.setColor(Color.BLUE);
-        g.fillRect((int) rocket.getX(), (int) (height - (rocket.getY() + rocket.getHeight())), (int) rocket.getWidth(), (int) rocket.getHeight());
+        g.fillRect((int) (rocket.getX() - rocket.getWidth() / 2), (int) (height - (rocket.getY() + rocket.getHeight())), (int) rocket.getWidth(), (int) rocket.getHeight());
         if (fuel > 0) {
             g.setColor(Color.RED);
-            g.fillRect((int) (rocket.getX() + rocket.getWidth() / 2 - 2.5), (int) (height - rocket.getY()), 5, 5);
+            g.fillRect((int) (rocket.getX() - 5), (int) (height - rocket.getY()), 10, 10);
         }
+
         fuelSlider.draw(g);
         massSlider.draw(g);
 	}
@@ -61,6 +62,10 @@ public class Rocket implements Demo {
         }
         if (massSlider.isActive()) {
             massSlider.tick();
+            if (rocket.getY() < 0.001) {
+                mass = massSlider.getValue();
+                rocket = new Rectangle(210, 0, (int) (mass * 8), 60);
+            }
         }
 
         if (running) {
@@ -75,7 +80,7 @@ public class Rocket implements Demo {
             }
             vy += ay;
             rocket.setBounds((int) rocket.getX(), (int) (rocket.getY() + vy), (int) rocket.getWidth(), (int) rocket.getHeight());
-            if (rocket.getY() < 0) {
+            if (rocket.getY() < 0.001) {
                 rocket.setBounds((int) rocket.getX(), 0, (int) rocket.getWidth(), (int) rocket.getHeight());
             }
         }
@@ -98,13 +103,13 @@ public class Rocket implements Demo {
     public void restart() {
         running = false;
 		ticks = 0;
-        rocket = new Rectangle(230, 0, 40, 60);
+        rocket = new Rectangle(210, 0, 40, 60);
         fuel = 20;
         mass = 5.0;
         vy = 0;
         ay = 0;
-        fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0);
-        massSlider = new Slider(450, 50, 300, 1, 10, 0.5);
+        fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0, "Fuel");
+        massSlider = new Slider(450, 50, 300, 1, 10, 0.5, "Mass");
     }
 	
 	public void click(int x, int y) {
@@ -126,7 +131,7 @@ public class Rocket implements Demo {
     public void keypress(char key) {
 		ticks = 0;
         mass = massSlider.getValue();
-        rocket = new Rectangle(230, 0, (int) (mass * 8), 60);
+        rocket = new Rectangle(210, 0, (int) (mass * 8), 60);
         fuel = (int) fuelSlider.getValue();
         vy = 0;
         ay = 0;
