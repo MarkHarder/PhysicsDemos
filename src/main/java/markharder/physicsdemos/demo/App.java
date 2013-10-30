@@ -2,10 +2,12 @@ package markharder.physicsdemos.demo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 
 import markharder.physicsdemos.demo.demos.Demo;
 import markharder.physicsdemos.demo.demos.Fireworks;
 import markharder.physicsdemos.demo.graphics.GraphicsWindow;
+import markharder.physicsdemos.demo.input.Mouse;
 
 /**
  *   Start the application. Brings up a menu with options for
@@ -25,9 +27,20 @@ public class App extends GraphicsWindow {
     }
 
     public void click() {
+        if (currentDemo != null) {
+            currentDemo.click(Mouse.location.x, Mouse.location.y);
+        }
     }
 
     public void keypress(char key) {
+        if (currentDemo != null) {
+            if (key == KeyEvent.VK_ESCAPE) {
+                currentDemo.quit();
+                currentDemo = null;
+            } else {
+                currentDemo.keypress(key);
+            }
+        }
     }
 
     public void tick() {

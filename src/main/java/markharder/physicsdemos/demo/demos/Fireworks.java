@@ -78,4 +78,10 @@ public class Fireworks implements Demo {
     public boolean isRunning() {
         return running;
     }
+
+    public void click(int x, int y) {
+    }
+
+    public void keypress(char key) {
+    }
 }
