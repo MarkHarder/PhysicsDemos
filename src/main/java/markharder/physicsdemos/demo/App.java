@@ -32,6 +32,7 @@ public class App extends GraphicsWindow {
         menuOptions.add("Launcher");
         menuOptions.add("Rain");
         menuOptions.add("Meteor");
+        menuOptions.add("Rocket");
         menuOptions.add("Quit");
 
         mainMenu = new Menu(width, height, menuOptions);
