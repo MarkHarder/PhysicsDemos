@@ -50,4 +50,14 @@ public class Line {
     public double getAngle() {
         return Math.atan((y2 - y1) / (x2 - x1));
     }
+
+    public Vector2D getNormal() {
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+        double magnitude = Math.sqrt(dx * dx + dy * dy);
+        if (y1 > y2) {
+            return new Vector2D(-dy / magnitude, dx / magnitude);
+        }
+        return new Vector2D(dy / magnitude, -dx / magnitude);
+    }
 }

@@ -61,4 +61,11 @@ public class Particle2D {
         }
         return new Line(x + vx, y + vy, x, y);
     }
+
+    public void reflect(Line wall) {
+        Vector2D normal = wall.getNormal();
+        Vector2D velocity = new Vector2D(vx, vy);
+        vx -= 2 * normal.getX() * Vector2D.dot(velocity, normal);
+        vy -= 2 * normal.getY() * Vector2D.dot(velocity, normal);
+    }
 }

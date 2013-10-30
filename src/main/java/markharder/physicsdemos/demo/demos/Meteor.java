@@ -62,7 +62,7 @@ public class Meteor implements Demo {
                 MeteorParticle2D p = particles.get(i);
                 for (int j = 0; j < lines.size(); j++) {
                     if (lines.get(j).intersects(p.getVelocityVector())) {
-                        System.out.println("**" + lines.get(j).getAngle());
+                        p.reflect(lines.get(j));
                     }
                 }
                 if (p.getLastY() < 0) {
