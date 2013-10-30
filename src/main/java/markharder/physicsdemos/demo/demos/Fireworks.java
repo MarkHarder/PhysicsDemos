@@ -98,6 +98,9 @@ public class Fireworks implements Demo {
         explodeFirework(x, height - y);
     }
 
+    public void release(int x, int y) {
+    }
+
     public void keypress(char key) {
     }
 }

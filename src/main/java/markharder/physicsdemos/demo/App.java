@@ -97,6 +97,12 @@ public class App extends GraphicsWindow {
         }
     }
 
+    public void release() {
+        if (currentDemo != null) {
+            currentDemo.release(Mouse.location.x, Mouse.location.y);
+        }
+    }
+
     public void keypress(char key) {
         if (currentDemo != null) {
             if (key == KeyEvent.VK_ESCAPE) {

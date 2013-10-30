@@ -83,6 +83,9 @@ public class Rain implements Demo {
 	public void click(int x, int y) {
 	}
 
+    public void release(int x, int y) {
+    }
+
     public void keypress(char key) {
     }
 

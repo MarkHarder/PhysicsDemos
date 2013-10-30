@@ -115,6 +115,9 @@ public class Meteor implements Demo {
 		}
 	}
 
+    public void release(int x, int y) {
+    }
+
     public void keypress(char key) {
     }
 

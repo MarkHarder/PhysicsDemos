@@ -113,6 +113,9 @@ public class Launcher implements Demo {
 		trails = !trails;
 	}
 
+    public void release(int x, int y) {
+    }
+
     public void keypress(char key) {
     }
 }

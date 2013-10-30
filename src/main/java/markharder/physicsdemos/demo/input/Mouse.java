@@ -39,8 +39,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+        App.application.release();
 	}
 
 	@Override
