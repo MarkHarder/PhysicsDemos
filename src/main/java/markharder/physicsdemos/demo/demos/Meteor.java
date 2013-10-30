@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 
-import markharder.physicsdemos.demo.input.Mouse;
 import markharder.physicsdemos.demo.physics.Line;
 import markharder.physicsdemos.demo.physics.Particle2D;
 import markharder.physicsdemos.demo.physics.Point;
@@ -103,14 +102,14 @@ public class Meteor implements Demo {
 		endPoint = null;
     }
 	
-	public void click() {
+	public void click(int x, int y) {
 		if (endPoint == null) {
-			endPoint = new Point(Mouse.location.getX(), height - Mouse.location.getY());
+			endPoint = new Point(x, height - y);
 		} else {
-			if (endPoint.getX() < Mouse.location.getX()) {
-				lines.add(new Line(endPoint.getX(), endPoint.getY(), Mouse.location.getX(), height - Mouse.location.getY()));
+			if (endPoint.getX() < x) {
+				lines.add(new Line(endPoint.getX(), endPoint.getY(), x, height - y));
 			} else {
-				lines.add(new Line(Mouse.location.getX(), height - Mouse.location.getY(), endPoint.getX(), endPoint.getY()));
+				lines.add(new Line(x, height - y, endPoint.getX(), endPoint.getY()));
 			}
 			endPoint = null;
 		}

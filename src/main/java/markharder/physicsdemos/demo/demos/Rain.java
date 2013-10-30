@@ -80,7 +80,7 @@ public class Rain implements Demo {
         }
 	}
 	
-	public void click() {
+	public void click(int x, int y) {
 	}
 
     public void keypress(char key) {

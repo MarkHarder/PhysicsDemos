@@ -11,6 +11,7 @@ import java.lang.reflect.Constructor;
 import markharder.physicsdemos.demo.demos.Demo;
 import markharder.physicsdemos.demo.graphics.GraphicsWindow;
 import markharder.physicsdemos.demo.interfacing.Menu;
+import markharder.physicsdemos.demo.input.Mouse;
 
 /**
  *   Start the application.
@@ -91,15 +92,19 @@ public class App extends GraphicsWindow {
     public void click() {
         if (inMenu()) {
             mainMenu.click();
-        } else {
-            currentDemo.click();
+        } else if (currentDemo != null) {
+            currentDemo.click(Mouse.location.x, Mouse.location.y);
         }
     }
 
     public void keypress(char key) {
-        if (key == KeyEvent.VK_ESCAPE) {
-            currentDemo.quit();
-            currentDemo = null;
+        if (currentDemo != null) {
+            if (key == KeyEvent.VK_ESCAPE) {
+                currentDemo.quit();
+                currentDemo = null;
+            } else {
+                currentDemo.keypress(key);
+            }
         }
     }
 

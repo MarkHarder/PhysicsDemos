@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import markharder.physicsdemos.demo.physics.Particle3D;
-import markharder.physicsdemos.demo.input.Mouse;
 
 /**
  * Fireworks demo
@@ -84,13 +83,6 @@ public class Fireworks implements Demo {
         }
     }
 
-    public void click() {
-        explodeFirework(Mouse.location.getX(), height - Mouse.location.getY());
-    }
-
-    public void keypress(char key) {
-    }
-
     private void explodeFirework(double x, double y) {
         Color c = colors[gen.nextInt(colors.length)];
         for (int i = 0; i < 24; i++) {
@@ -100,5 +92,12 @@ public class Fireworks implements Demo {
 
     public boolean isRunning() {
         return running;
+    }
+
+    public void click(int x, int y) {
+        explodeFirework(x, height - y);
+    }
+
+    public void keypress(char key) {
     }
 }

@@ -25,7 +25,7 @@ public interface Demo {
 
     public void draw(Graphics g);
 
-    public void click();
+    public void click(int x, int y);
 
     public void keypress(char key);
 }

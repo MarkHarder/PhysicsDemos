@@ -109,7 +109,7 @@ public class Launcher implements Demo {
         running = false;
     }
 	
-	public void click() {
+	public void click(int x, int y) {
 		trails = !trails;
 	}
 

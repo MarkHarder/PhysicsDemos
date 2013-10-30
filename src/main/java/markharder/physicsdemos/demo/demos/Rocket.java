@@ -83,9 +83,10 @@ public class Rocket implements Demo {
         fuel = 20;
     }
 	
-	public void click() {
+	public void click(int x, int y) {
 	}
 
     public void keypress(char key) {
+        running = !running;
     }
 }
