@@ -19,7 +19,7 @@ public class Button extends Rectangle {
     private boolean hover;
 
     public Button(String name, int index) {
-        super(50, 50 + 60 * index, 300, 50);
+        super(50, 30 + 60 * index, 300, 50);
         this.name = name;
         this.index = index;
         this.hover = false;
@@ -43,7 +43,7 @@ public class Button extends Rectangle {
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-        g.drawString(name, 60, 90 + 60 * index);
+        g.drawString(name, 60, 70 + 60 * index);
     }
 
     public String getName() {
