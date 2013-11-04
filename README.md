@@ -1,11 +1,11 @@
 PhysicsDemos
 ============
 
-An applicatoin that demonstrates multiple principles of introductory physics concepts.
+An application that demonstrates multiple principles of introductory physics concepts.
 
 ####Instructions to Run PhysicsDemos
 
-To run with maven type the following into the command line inside the project directory:
+To run with maven, type the following into the command line while inside the project directory:
 
 ```
 $ mvn package
@@ -15,7 +15,7 @@ $ mvn package
 $ java -jar target/demo-1.0-SNAPSHOT.jar
 ```
 
-Click a demo to run it or 'Quit' to close the application.
+Click on a demo to run it or 'Quit' to close the application.
 Pressing escape when a demo is running returns to the menu.
 
 ####Some of the demos include:
