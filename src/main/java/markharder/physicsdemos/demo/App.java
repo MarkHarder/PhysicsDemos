@@ -92,7 +92,7 @@ public class App extends GraphicsWindow {
 
     public void click() {
         if (inMenu()) {
-            mainMenu.click();
+            mainMenu.click(Mouse.location.x, Mouse.location.y);
         } else if (currentDemo != null) {
             currentDemo.click(Mouse.location.x, Mouse.location.y);
         }

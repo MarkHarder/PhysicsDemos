@@ -2,11 +2,11 @@ package markharder.physicsdemos.demo.interfacing;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import markharder.physicsdemos.demo.App;
-import markharder.physicsdemos.demo.input.Mouse;
 
 /**
  * A simple menu interface with buttons to perform actions
@@ -45,9 +45,9 @@ public class Menu {
         }
     }
 
-    public void click() {
+    public void click(int mouseX, int mouseY) {
         for (Button b : buttons) {
-            if (b.contains(Mouse.location)) {
+            if (b.contains(new Point(mouseX, mouseY))) {
                 if (b.getName().equals("Quit")) {
                     App.application.quit();
                 } else {
