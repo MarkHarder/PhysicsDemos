@@ -13,10 +13,14 @@ public class PeriodicWave implements Demo {
     private Slider amplitude;
     private Slider period;
     private int[] ys;
+    private boolean reverse;
+    private int offset;
 
     private Slider amplitude2;
     private Slider period2;
     private int[] ys2;
+    private boolean reverse2;
+    private int offset2;
 	
 	public PeriodicWave(int width, int height) {
         this.width = width;
@@ -34,18 +38,24 @@ public class PeriodicWave implements Demo {
 
         amplitude = new Slider(400, 50, 150, 10, 50, 1.0, "Amp.");
         period = new Slider(450, 50, 150, 20, 100, 1.0, "Per.");
+        reverse = false;
+        offset = 0;
 
         amplitude2 = new Slider(400, 250, 150, 10, 50, 1.0, "Amp.");
         period2 = new Slider(450, 250, 150, 20, 100, 1.0, "Per.");
+        reverse2 = false;
+        offset2 = 0;
 	}
 
     private int y(int x, double t) {
+        t += offset;
         double k = 2 * Math.PI / (period.getValue());
         double w = 2 * Math.PI / period.getValue(); // w = omega
         return (int) (amplitude.getValue() * Math.cos(k * x - w * t));
     }
 
     private int y2(int x, double t) {
+        t += offset2;
         double k = 2 * Math.PI / (period2.getValue());
         double w = 2 * Math.PI / period2.getValue(); // w = omega
         return (int) (amplitude2.getValue() * Math.cos(k * x - w * t));
@@ -103,14 +113,32 @@ public class PeriodicWave implements Demo {
 
         if (running) {
             ticks++;
-            for (int i = 299; i >= 1; i--) {
-                ys[i] = ys[i - 1];
-                ys2[i] = ys2[i - 1];
-            }
 
             int t = (int) (ticks / 1);
-            ys[0] = y(0, t);
-            ys2[0] = y2(0, t);
+
+            if (reverse) {
+                for (int i = 0; i < 299; i++) {
+                    ys[i] = ys[i + 1];
+                }
+                ys[299] = y(0, t);
+            } else {
+                for (int i = 299; i >= 1; i--) {
+                    ys[i] = ys[i - 1];
+                }
+                ys[0] = y(0, t);
+            }
+
+            if (reverse2) {
+                for (int i = 0; i < 299; i++) {
+                    ys2[i] = ys2[i + 1];
+                }
+                ys2[299] = y2(0, t);
+            } else {
+                for (int i = 299; i >= 1; i--) {
+                    ys2[i] = ys2[i - 1];
+                }
+                ys2[0] = y2(0, t);
+            }
         }
 	}
 
@@ -155,5 +183,18 @@ public class PeriodicWave implements Demo {
     }
 
     public void keypress(char key) {
+        if (key == '1') {
+            reverse = !reverse;
+        } else if (key == '2') {
+            reverse2 = !reverse2;
+        } else if (key == 'q') {
+            offset--;
+        } else if (key == 'w') {
+            offset++;
+        } else if (key == 'a') {
+            offset2--;
+        } else if (key == 's') {
+            offset2++;
+        }
     }
 }
