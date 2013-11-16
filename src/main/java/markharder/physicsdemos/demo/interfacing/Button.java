@@ -34,6 +34,10 @@ public class Button extends Rectangle {
     }
 
     public void draw(Graphics g) {
+        if (index < 1 || index > 5) {
+            return;
+        }
+
         if (hover) {
             g.setColor(new Color(0, 0, 255, 200));
         } else {
@@ -48,6 +52,20 @@ public class Button extends Rectangle {
 
     public String getName() {
         return name;
+    }
+
+    public void scrollUp() {
+        index++;
+        y = 30 + 60 * index;
+    }
+
+    public void scrollDown() {
+        index--;
+        y = 30 + 60 * index;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }
 

@@ -188,13 +188,13 @@ public class PeriodicWave implements Demo {
         } else if (key == '2') {
             reverse2 = !reverse2;
         } else if (key == 'q') {
-            offset--;
+            offset -= 5;
         } else if (key == 'w') {
-            offset++;
+            offset += 5;
         } else if (key == 'a') {
-            offset2--;
+            offset2 -= 5;
         } else if (key == 's') {
-            offset2++;
+            offset2 += 5;
         }
     }
 }
