@@ -16,6 +16,7 @@ $ java -jar target/demo-1.0-SNAPSHOT.jar
 ```
 
 Click on a demo to run it or 'Quit' to close the application.
+Use the up and down arrows to look through the demos.
 Pressing escape when a demo is running returns to the menu.
 
 ####Some of the demos include:
@@ -31,3 +32,5 @@ Meteor - A particle launches from the top of the screen. Click two points in the
 Rocket - Drag the sliders to adjust fuel amount and mass of the rocket. Press space to launch a new rocket.
 
 Cylinder - Drag the sliders to adjust the mass of the cylinder and box. Press space or adjust the sliders to reset the box.
+
+PeriodicWave - Drag the sliders to adjust amplitude and period for red and blue waves. Press '1' or '2' to reverse the wave direction. Press 'q' or 'a' to subtract an offset from either wave. Press 'w' or 's' to add an offset to either wave.
