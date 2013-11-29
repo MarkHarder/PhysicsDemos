@@ -1,6 +1,7 @@
 package markharder.physicsdemos.demo.demos;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -19,6 +20,8 @@ public class Rocket implements Demo {
     private int fuel;
     private double mass = 5.0;
 
+    private int maxHeight;
+
     private Slider fuelSlider;
     private Slider massSlider;
 	
@@ -30,6 +33,7 @@ public class Rocket implements Demo {
 		ticks = 0;
 
         rocket = new Rectangle(210, 0, 40, 60);
+        maxHeight = (int) rocket.getHeight();
         vy = 0;
         ay = 0;
         fuel = 60 / 3;
@@ -53,6 +57,13 @@ public class Rocket implements Demo {
 
         fuelSlider.draw(g);
         massSlider.draw(g);
+
+        g.setColor(Color.GREEN);
+
+        g.drawLine(0, height - maxHeight, width - 100, height - maxHeight);
+
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+        g.drawString(Integer.toString(maxHeight) + "m", 50, 50);
 	}
 
 	@Override
@@ -83,6 +94,10 @@ public class Rocket implements Demo {
             if (rocket.getY() < 0.001) {
                 rocket.setBounds((int) rocket.getX(), 0, (int) rocket.getWidth(), (int) rocket.getHeight());
             }
+
+            if (rocket.getY() + rocket.getHeight() > maxHeight) {
+                maxHeight = (int) (rocket.getY() + rocket.getHeight());
+            }
         }
 	}
 
@@ -104,6 +119,7 @@ public class Rocket implements Demo {
         running = false;
 		ticks = 0;
         rocket = new Rectangle(210, 0, 40, 60);
+        maxHeight = (int) rocket.getHeight();
         fuel = 20;
         mass = 5.0;
         vy = 0;
@@ -132,6 +148,7 @@ public class Rocket implements Demo {
 		ticks = 0;
         mass = massSlider.getValue();
         rocket = new Rectangle(210, 0, (int) (mass * 8), 60);
+        maxHeight = (int) rocket.getHeight();
         fuel = (int) fuelSlider.getValue();
         vy = 0;
         ay = 0;
