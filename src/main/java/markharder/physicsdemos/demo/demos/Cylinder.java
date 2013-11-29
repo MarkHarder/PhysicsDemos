@@ -1,6 +1,7 @@
 package markharder.physicsdemos.demo.demos;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -9,7 +10,6 @@ import markharder.physicsdemos.demo.interfacing.Slider;
 public class Cylinder implements Demo {
     public boolean running;
     private int width, height;
-	private int ticks;
 	
     private Rectangle box;
     private double vy, ay;
@@ -18,13 +18,15 @@ public class Cylinder implements Demo {
 
     private Slider cylinderMassSlider;
     private Slider boxMassSlider;
+
+    private int timer;
 	
 	public Cylinder(int width, int height) {
         this.width = width;
         this.height = height;
         running = false;
 
-		ticks = 0;
+        timer = 0;
 
         vy = 0;
         ay = 0;
@@ -52,6 +54,14 @@ public class Cylinder implements Demo {
 
         cylinderMassSlider.draw(g);
         boxMassSlider.draw(g);
+
+        g.setColor(Color.GREEN);
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+        String seconds = Integer.toString(timer % 60);
+        if (seconds.length() == 1) {
+            seconds = "0" + seconds;
+        }
+        g.drawString(Integer.toString(timer / 60) + "." + seconds + "s", 50, 50);
 	}
 
 	@Override
@@ -62,6 +72,7 @@ public class Cylinder implements Demo {
             box = new Rectangle((int) (300 - (boxMass * 2)), 400, (int) (boxMass * 4), 40);
             vy = 0;
             ay = 0;
+            timer = 0;
         }
         if (boxMassSlider.isActive()) {
             boxMassSlider.tick();
@@ -69,10 +80,12 @@ public class Cylinder implements Demo {
             box = new Rectangle((int) (300 - (boxMass * 2)), 400, (int) (boxMass * 4), 40);
             vy = 0;
             ay = 0;
+            timer = 0;
         }
 
         if (running) {
             if (box.getY() > 40.001) {
+                timer++;
                 ay = -9.8 / 60 / (1 + cylinderMass / (2 * boxMass));
                 vy += ay;
                 box.setBounds((int) box.getX(), (int) (box.getY() + vy), (int) box.getWidth(), (int) box.getHeight());
@@ -95,7 +108,7 @@ public class Cylinder implements Demo {
 
     public void restart() {
         running = false;
-		ticks = 0;
+        timer = 0;
 
         vy = 0;
         ay = 0;
@@ -124,7 +137,7 @@ public class Cylinder implements Demo {
     }
 
     public void keypress(char key) {
-		ticks = 0;
+        timer = 0;
         box = new Rectangle((int) (300 - (boxMass * 2)), 400, (int) (boxMass * 4), 40);
         vy = 0;
         ay = 0;
