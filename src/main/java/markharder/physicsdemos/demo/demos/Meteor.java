@@ -36,7 +36,7 @@ public class Meteor implements Demo {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
 		
-		g.setColor(Color.GREEN);
+        g.setColor(new Color(0x2ECC71));
 		for (int i = 0; i < lines.size(); i++) {
 			lines.get(i).draw(g, width, height);
 		}
@@ -46,7 +46,7 @@ public class Meteor implements Demo {
 		}
 		
 		if (endPoint != null) {
-			g.setColor(Color.GREEN);
+			g.setColor(new Color(0x2ECC71));
 			g.fillOval((int) (endPoint.getX() - 2.5), (int) (height - (endPoint.getY() - 2.5)), 5, 5);
 		}
 
@@ -148,25 +148,25 @@ public class Meteor implements Demo {
         public void draw(Graphics g, int width, int height) {
             Point p = trail[15];
             if (p != null) {
-                g.setColor(Color.WHITE);
+                g.setColor(new Color(0xECF0F1));
                 g.fillOval((int) (p.getX() - 5.0 / 2), (int) (height - (p.getY() + 5.0 / 2)), 5, 5);
             }
 
             p = trail[10];
             if (p != null) {
-                g.setColor(Color.YELLOW);
+                g.setColor(new Color(0xF1C40F));
                 g.fillOval((int) (p.getX() - 10.0 / 2), (int) (height - (p.getY() + 10.0 / 2)), 10, 10);
             }
 
             p = trail[5];
             if (p != null) {
-                g.setColor(Color.ORANGE);
+                g.setColor(new Color(0xE67E22));
                 g.fillOval((int) (p.getX() - 15.0 / 2), (int) (height - (p.getY() + 15.0 / 2)), 15, 15);
             }
 
             p = trail[0];		
             if (p != null) {
-                g.setColor(Color.BLUE);
+                g.setColor(new Color(0x3498DB));
                 g.fillOval((int) (p.getX() - 20.0 / 2), (int) (height - (p.getY() + 20.0 / 2)), 20, 20);
             }
         }

@@ -48,17 +48,17 @@ public class Rocket implements Demo {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
 		
-		g.setColor(Color.BLUE);
+		g.setColor(new Color(0x3498DB));
         g.fillRect((int) (rocket.getX() - rocket.getWidth() / 2), (int) (height - (rocket.getY() + rocket.getHeight())), (int) rocket.getWidth(), (int) rocket.getHeight());
         if (fuel > 0) {
-            g.setColor(Color.RED);
+            g.setColor(new Color(0xE74C3C));
             g.fillRect((int) (rocket.getX() - 5), (int) (height - rocket.getY()), 10, 10);
         }
 
         fuelSlider.draw(g);
         massSlider.draw(g);
 
-        g.setColor(Color.GREEN);
+        g.setColor(new Color(0x2ECC71));
 
         g.drawLine(0, height - maxHeight, width - 100, height - maxHeight);
 

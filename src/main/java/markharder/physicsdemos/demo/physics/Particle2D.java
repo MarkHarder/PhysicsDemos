@@ -35,7 +35,7 @@ public class Particle2D {
     }
 
     public void draw(Graphics g, int width, int height) {
-        g.setColor(Color.BLUE);
+        g.setColor(new Color(0x3498DB));
         g.fillOval((int) x, (int) (height - y), 5, 5);
     }
 

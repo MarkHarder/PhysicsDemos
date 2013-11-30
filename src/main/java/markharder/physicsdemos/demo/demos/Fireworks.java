@@ -26,7 +26,7 @@ public class Fireworks implements Demo {
     private int width, height;
     private List<Particle3D> particles;
 
-	private Color[] colors = {Color.ORANGE, Color.GREEN, Color.BLUE};
+	private Color[] colors = {new Color(0xE67E22), new Color(0x2ECC71), new Color(0x3498DB), new Color(0x9B59B6)};
 
     private Random gen;
 

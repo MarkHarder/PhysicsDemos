@@ -63,29 +63,29 @@ public class PeriodicWave implements Demo {
 
 	@Override
 	public void draw(Graphics g) {
-        g.setColor(new Color(0, 0, 0, 30));
+        g.setColor(Color.BLACK);
         g.fillRect(0, 0, width, height);
 
         for (int x = 0; x < 300; x++) {
             if (x < 299 && ys[x] != ys[x+1]) {
-                g.setColor(Color.RED);
+                g.setColor(new Color(0xE74C3C));
                 g.drawLine(100 + x, 100 + ys[x], 100 + x + 1, 100 + ys[x + 1]);
             }
-            g.setColor(Color.RED);
+            g.setColor(new Color(0xE74C3C));
             g.fillRect(100 + x, 100 + ys[x], 1, 1);
 
             if (x < 299 && ys2[x] != ys2[x+1]) {
-                g.setColor(Color.BLUE);
+                g.setColor(new Color(0x3498DB));
                 g.drawLine(100 + x, 250 + ys2[x], 100 + x + 1, 250 + ys2[x + 1]);
             }
-            g.setColor(Color.BLUE);
+            g.setColor(new Color(0x3498DB));
             g.fillRect(100 + x, 250 + ys2[x], 1, 1);
 
             if (x < 299 && ys[x] + ys2[x] != ys[x+1] + ys2[x+1]) {
-                g.setColor(new Color(255, 0, 255));
+                g.setColor(new Color(0x9B59B6));
                 g.drawLine(100 + x, 400 + ys[x] + ys2[x], 100 + x + 1, 400 + ys[x] + ys2[x + 1]);
             }
-            g.setColor(new Color(255, 0, 255));
+            g.setColor(new Color(0x9B59B6));
             g.fillRect(100 + x, 400 + ys[x] + ys2[x], 1, 1);
         }
 

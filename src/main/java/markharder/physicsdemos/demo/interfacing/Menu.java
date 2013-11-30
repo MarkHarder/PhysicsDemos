@@ -46,18 +46,18 @@ public class Menu {
             b.draw(g);
         }
 
-        g.setColor(Color.YELLOW);
+        g.setColor(new Color(0xE67E22));
         g.fillRect(100, 30, 200, 50);
         int[] x = {150, 200, 250};
         int[] y = {70, 50, 70};
-        g.setColor(Color.ORANGE);
+        g.setColor(new Color(0xD34500));
         g.fillPolygon(x, y, 3);
 
-        g.setColor(Color.YELLOW);
+        g.setColor(new Color(0xE67E22));
         g.fillRect(100, 30 + 60 * 6, 200, 50);
         int[] x2 = {150, 200, 250};
         int[] y2 = {50 + 60 * 6, 70 + 60 * 6, 50 + 60 * 6};
-        g.setColor(Color.ORANGE);
+        g.setColor(new Color(0xD35400));
         g.fillPolygon(x2, y2, 3);
     }
 

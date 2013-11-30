@@ -39,13 +39,13 @@ public class Button extends Rectangle {
         }
 
         if (hover) {
-            g.setColor(new Color(0, 0, 255, 200));
+            g.setColor(new Color(0x2980B9));
         } else {
-            g.setColor(Color.BLUE);
+            g.setColor(new Color(0x3498DB));
         }
         g.fillRect(x, y, width, height);
 
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(0xECF0F1));
         g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
         g.drawString(name, 60, 70 + 60 * index);
     }
