@@ -77,7 +77,7 @@ public class Menu {
             for (Button b : buttons) {
                 b.scrollUp();
             }
-        } else if (mouseX > 100 && mouseX < 300 && mouseY > 30 + 60 * 6 && mouseY < 80 + 60 * 6 && scrollIndex > -3) {
+        } else if (mouseX > 100 && mouseX < 300 && mouseY > 30 + 60 * 6 && mouseY < 80 + 60 * 6 && scrollIndex > -4) {
             scrollIndex--;
             for (Button b : buttons) {
                 b.scrollDown();

@@ -36,6 +36,7 @@ public class App extends GraphicsWindow {
         menuOptions.add("Rocket");
         menuOptions.add("Cylinder");
         menuOptions.add("PeriodicWave");
+        menuOptions.add("Gravitation");
         menuOptions.add("Quit");
 
         mainMenu = new Menu(width, height, menuOptions);
