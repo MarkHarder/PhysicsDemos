@@ -33,4 +33,6 @@ Rocket - Drag the sliders to adjust fuel amount and mass of the rocket. Press sp
 
 Cylinder - Drag the sliders to adjust the mass of the cylinder and box. Press space or adjust the sliders to reset the box.
 
-PeriodicWave - Drag the sliders to adjust amplitude and period for red and blue waves. Press '1' or '2' to reverse the wave direction. Press 'q' or 'a' to subtract an offset from either wave. Press 'w' or 's' to add an offset to either wave.
+PeriodicWave - Drag the sliders to adjust amplitude and period for red and blue waves. Press '1' or '2' to reverse the wave direction. Press 'q' or 'a' to phase shift either wave to the left. Press 'w' or 's' to phase shift to the right.
+
+Gravitation - Press space to spawn a particle and click and drag the mouse to create a new gravity source.

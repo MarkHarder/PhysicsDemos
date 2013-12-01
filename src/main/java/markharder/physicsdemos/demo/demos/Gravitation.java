@@ -52,8 +52,8 @@ public class Gravitation implements Demo {
             drag.draw(g, width, height);
         }
 
-		for (Satellite s : particles) {
-			s.draw(g, width, height);
+        for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).draw(g, width, height);
 		}
 	}
 
@@ -106,6 +106,6 @@ public class Gravitation implements Demo {
     }
 
     public void keypress(char key) {
-        particles.add(new Satellite(0.0, 200.0, 0.0, 0.0));
+        particles.add(new Satellite(200.0, 200.0, 1.0, 0.0));
     }
 }
