@@ -55,7 +55,7 @@ public class Meteor implements Demo {
 		
 		if (endPoint != null) {
 			g.setColor(new Color(0x2ECC71));
-			g.fillOval((int) (endPoint.getX() - 2.5), (int) (height - (endPoint.getY() - 2.5)), 5, 5);
+			g.fillOval((int) (endPoint.getX() - 2.5), (int) (height - (endPoint.getY() + 2.5)), 5, 5);
 		}
 
 	}
