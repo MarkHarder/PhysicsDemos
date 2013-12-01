@@ -23,9 +23,16 @@ public class Gravitation implements Demo {
 		
 		particles = new ArrayList<Satellite>();
         planets = new ArrayList<Planet>();
+
+        setup();
+	}
+
+    public void setup() {
+        particles.clear();
+        planets.clear();
         drag = null;
         running = false;
-	}
+    }
 	
 	@Override
 	public void draw(Graphics g) {
@@ -88,10 +95,7 @@ public class Gravitation implements Demo {
     }
 
     public void restart() {
-		particles.clear();
-        planets.clear();
-        drag = null;
-        running = false;
+        setup();
     }
 	
 	public void click(int x, int y) {
