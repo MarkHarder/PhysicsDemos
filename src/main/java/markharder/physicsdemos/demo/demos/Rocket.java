@@ -28,6 +28,11 @@ public class Rocket implements Demo {
 	public Rocket(int width, int height) {
         this.width = width;
         this.height = height;
+
+        setup();
+	}
+
+    public void setup() {
         running = false;
 
 		ticks = 0;
@@ -41,7 +46,7 @@ public class Rocket implements Demo {
 
         fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0, "Fuel");
         massSlider = new Slider(450, 50, 300, 1, 10, 0.5, "Mass");
-	}
+    }
 
 	@Override
 	public void draw(Graphics g) {
@@ -116,16 +121,7 @@ public class Rocket implements Demo {
     }
 
     public void restart() {
-        running = false;
-		ticks = 0;
-        rocket = new Rectangle(210, 0, 40, 60);
-        maxHeight = (int) rocket.getHeight();
-        fuel = 20;
-        mass = 5.0;
-        vy = 0;
-        ay = 0;
-        fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0, "Fuel");
-        massSlider = new Slider(450, 50, 300, 1, 10, 0.5, "Mass");
+        setup();
     }
 	
 	public void click(int x, int y) {

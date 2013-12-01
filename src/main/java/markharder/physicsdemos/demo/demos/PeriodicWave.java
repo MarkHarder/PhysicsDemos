@@ -26,6 +26,10 @@ public class PeriodicWave implements Demo {
         this.width = width;
         this.height = height;
 		
+        setup();
+	}
+
+    public void setup() {
         ys = new int[300];
         ys2 = new int[300];
         for (int i = 0; i < 300; i++) {
@@ -45,7 +49,7 @@ public class PeriodicWave implements Demo {
         period2 = new Slider(450, 250, 150, 20, 100, 1.0, "Per.");
         reverse2 = false;
         offset2 = 0;
-	}
+    }
 
     private int y(int x, double t) {
         t += offset;
@@ -154,8 +158,7 @@ public class PeriodicWave implements Demo {
     }
 
     public void restart() {
-		ticks = 0;
-        running = false;
+        setup();
     }
 	
 	public void click(int x, int y) {

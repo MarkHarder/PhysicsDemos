@@ -31,22 +31,27 @@ public class Fireworks implements Demo {
     private Random gen;
 
     public Fireworks(int width, int height) {
-        running = false;
-        particles = new ArrayList<Particle3D>();
-
         this.width = width;
         this.height = height;
 
-        gen = new Random();
+        particles = new ArrayList<Particle3D>();
+
+        setup();
     }
 
     public void start() {
         running = true;
     }
 
-    public void restart() {
+    public void setup() {
         running = false;
         particles.clear();
+
+        gen = new Random();
+    }
+
+    public void restart() {
+        setup();
     }
 
     public void quit() {

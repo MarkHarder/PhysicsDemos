@@ -19,11 +19,17 @@ public class Launcher implements Demo {
         this.width = width;
         this.height = height;
 		
-		trails = true;
 		particles = new ArrayList<Particle2D>();
-		ticks = 0;
-        running = false;
+
+        setup();
 	}
+
+    public void setup() {
+		trails = true;
+		ticks = 0;
+        particles.clear();
+        running = false;
+    }
 	
 	@Override
 	public void draw(Graphics g) {
@@ -103,10 +109,7 @@ public class Launcher implements Demo {
     }
 
     public void restart() {
-		trails = true;
-		particles.clear();
-		ticks = 0;
-        running = false;
+        setup();
     }
 	
 	public void click(int x, int y) {

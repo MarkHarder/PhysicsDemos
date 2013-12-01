@@ -15,6 +15,8 @@ import java.awt.Graphics;
 public interface Demo {
     public void restart();
 
+    public void setup();
+
     public void start();
 
     public void pause();

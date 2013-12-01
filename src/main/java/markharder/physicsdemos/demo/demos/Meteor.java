@@ -22,14 +22,22 @@ public class Meteor implements Demo {
 	public Meteor(int width, int height) {
         this.width = width;
         this.height = height;
+
+		particles = new ArrayList<MeteorParticle2D>();
+		lines = new ArrayList<Line>();
+
+        setup();
+	}
+
+    public void setup() {
         running = false;
 
 		ticks = 0;
-		particles = new ArrayList<MeteorParticle2D>();
-		lines = new ArrayList<Line>();
 		
+        particles.clear();
+        lines.clear();
 		endPoint = null;
-	}
+    }
 
 	@Override
 	public void draw(Graphics g) {
@@ -94,12 +102,7 @@ public class Meteor implements Demo {
     }
 
     public void restart() {
-        running = false;
-		ticks = 0;
-		particles.clear();
-		lines.clear();
-		
-		endPoint = null;
+        setup();
     }
 	
 	public void click(int x, int y) {

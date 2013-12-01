@@ -24,6 +24,11 @@ public class Cylinder implements Demo {
 	public Cylinder(int width, int height) {
         this.width = width;
         this.height = height;
+
+        setup();
+	}
+
+    public void setup() {
         running = false;
 
         timer = 0;
@@ -36,7 +41,7 @@ public class Cylinder implements Demo {
 
         cylinderMassSlider = new Slider(400, 50, 320, 1, 10, 0.5, "Cylinder");
         boxMassSlider = new Slider(450, 70, 300, 1, 20, 0.5, "Box");
-	}
+    }
 
 	@Override
 	public void draw(Graphics g) {
@@ -107,17 +112,7 @@ public class Cylinder implements Demo {
     }
 
     public void restart() {
-        running = false;
-        timer = 0;
-
-        vy = 0;
-        ay = 0;
-        cylinderMass = 5.0;
-        boxMass = 5.0;
-        box = new Rectangle((int) (300 - (boxMass * 2)), 400, (int) (boxMass * 4), 40);
-
-        cylinderMassSlider = new Slider(400, 50, 320, 5, 30, 0.0, "Cylinder");
-        boxMassSlider = new Slider(450, 70, 300, 1, 20, 0.5, "Box");
+        setup();
     }
 	
 	public void click(int x, int y) {

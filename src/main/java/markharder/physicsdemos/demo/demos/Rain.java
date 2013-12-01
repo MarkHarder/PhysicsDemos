@@ -18,11 +18,18 @@ public class Rain implements Demo {
 	public Rain(int width, int height) {
         this.width = width;
         this.height = height;
+
+		particles = new ArrayList<Particle2D>();
+
+        setup();
+	}
+
+    public void setup() {
         running = true;
 		
-		particles = new ArrayList<Particle2D>();
+        particles.clear();
 		ticks = 0;
-	}
+    }
 	
 	@Override
 	public void draw(Graphics g) {
@@ -101,8 +108,6 @@ public class Rain implements Demo {
     }
 
     public void restart() {
-        running = true;
-		particles.clear();
-		ticks = 0;
+        setup();
     }
 }
