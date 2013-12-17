@@ -41,7 +41,7 @@ public class Rocket implements Demo {
         maxHeight = (int) rocket.getHeight();
         vy = 0;
         ay = 0;
-        fuel = 60 / 3;
+        fuel = 0;
         mass = 5.0;
 
         fuelSlider = new Slider(400, 50, 300, 5, 30, 0.0, "Fuel");
@@ -111,6 +111,7 @@ public class Rocket implements Demo {
     }
 
     public void start() {
+        running = true;
     }
 
     public void pause() {

@@ -1,7 +1,9 @@
 package markharder.physicsdemos.demo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -26,6 +28,9 @@ public class App extends GraphicsWindow {
     private Menu mainMenu;
     private Demo currentDemo;
 
+    private Rectangle resume;
+    private Rectangle returnToMenu;
+
     public App(int width, int height) {
         super(width, height);
 
@@ -43,6 +48,9 @@ public class App extends GraphicsWindow {
         mainMenu = new Menu(width, height, menuOptions);
 
         currentDemo = null;
+
+        resume = new Rectangle(125, 150, 250, 50);
+        returnToMenu = new Rectangle(125, 220, 250, 50);
     }
 
     public void quit() {
@@ -97,7 +105,16 @@ public class App extends GraphicsWindow {
         if (inMenu()) {
             mainMenu.click(Mouse.location.x, Mouse.location.y);
         } else if (currentDemo != null) {
-            currentDemo.click(Mouse.location.x, Mouse.location.y);
+            if (currentDemo.running()) {
+                currentDemo.click(Mouse.location.x, Mouse.location.y);
+            } else {
+                if (resume.contains(Mouse.location)) {
+                    currentDemo.start();
+                } else if (returnToMenu.contains(Mouse.location)) {
+                    currentDemo.quit();
+                    currentDemo = null;
+                }
+            }
         }
     }
 
@@ -135,9 +152,33 @@ public class App extends GraphicsWindow {
         } else {
             currentDemo.draw(g);
 
-            if (!currentDemo.running()) {
-                g.setColor(new Color(0, 0, 0, 128));
+            if (currentDemo != null && !currentDemo.running()) {
+                g.setColor(new Color(0, 0, 0, 200));
                 g.fillRect(0, 0, width, height);
+
+                // Resume game button
+                if (resume.contains(Mouse.location)) {
+                    g.setColor(new Color(0x2980B9));
+                } else {
+                    g.setColor(new Color(0x3498DB));
+                }
+                g.fillRect(resume.x, resume.y, resume.width, resume.height);
+
+                g.setColor(new Color(0xECF0F1));
+                g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+                g.drawString("Resume Game", resume.x + 35, resume.y + 35);
+                
+                // Return to main menu button
+                if (returnToMenu.contains(Mouse.location)) {
+                    g.setColor(new Color(0x2980B9));
+                } else {
+                    g.setColor(new Color(0x3498DB));
+                }
+                g.fillRect(returnToMenu.x, returnToMenu.y, returnToMenu.width, returnToMenu.height);
+
+                g.setColor(new Color(0xECF0F1));
+                g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+                g.drawString("Return to Menu", returnToMenu.x + 30, returnToMenu.y + 35);
             }
         }
     }

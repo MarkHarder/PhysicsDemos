@@ -102,6 +102,7 @@ public class Cylinder implements Demo {
 	}
 
     public void start() {
+        running = true;
     }
 
     public void pause() {
