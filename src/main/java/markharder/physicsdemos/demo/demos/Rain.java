@@ -104,6 +104,10 @@ public class Rain implements Demo {
         running = false;
     }
 
+    public boolean running() {
+        return running;
+    }
+
     public void quit() {
     }
 

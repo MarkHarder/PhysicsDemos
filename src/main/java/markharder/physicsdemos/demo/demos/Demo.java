@@ -21,6 +21,8 @@ public interface Demo {
 
     public void pause();
 
+    public boolean running();
+
     public void quit();
 
     public void tick();

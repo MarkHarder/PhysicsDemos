@@ -61,6 +61,10 @@ public class Fireworks implements Demo {
         running = false;
     }
 
+    public boolean running() {
+        return running;
+    }
+
     public void tick() {
         if (running) {
             List<Integer> delete = new ArrayList<Integer>();

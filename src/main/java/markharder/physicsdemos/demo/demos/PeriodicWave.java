@@ -70,6 +70,11 @@ public class PeriodicWave implements Demo {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, width, height);
 
+        g.setColor(new Color(50, 50, 50));
+        g.drawLine(100, 100, 400, 100);
+        g.drawLine(100, 250, 400, 250);
+        g.drawLine(100, 400, 400, 400);
+
         for (int x = 0; x < 300; x++) {
             if (x < 299 && ys[x] != ys[x+1]) {
                 g.setColor(new Color(0xE74C3C));
@@ -152,6 +157,10 @@ public class PeriodicWave implements Demo {
 
     public void pause() {
         running = false;
+    }
+
+    public boolean running() {
+        return running;
     }
 
     public void quit() {

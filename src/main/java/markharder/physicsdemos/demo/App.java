@@ -1,5 +1,6 @@
 package markharder.physicsdemos.demo;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -109,8 +110,11 @@ public class App extends GraphicsWindow {
     public void keypress(char key) {
         if (currentDemo != null) {
             if (key == KeyEvent.VK_ESCAPE) {
-                currentDemo.quit();
-                currentDemo = null;
+                if (currentDemo.running()) {
+                    currentDemo.pause();
+                } else {
+                    currentDemo.start();
+                }
             } else {
                 currentDemo.keypress(key);
             }
@@ -130,6 +134,11 @@ public class App extends GraphicsWindow {
             mainMenu.draw(g);
         } else {
             currentDemo.draw(g);
+
+            if (!currentDemo.running()) {
+                g.setColor(new Color(0, 0, 0, 128));
+                g.fillRect(0, 0, width, height);
+            }
         }
     }
 
